@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QA Employee Portal</title>
+</head>
+<body>
+    <h1>QA Employee Portal</h1>
+
+    <h2>Login</h2>
+
+    <label>Email:</label>
+    <input id="email" type="email">
+
+    <br><br>
+
+    <label>Password:</label>
+    <input id="password" type="password">
+
+    <br><br>
+
+    <button onclick="login()">Login</button>
+
+    <p id="message"></p>
+    <script>
+        function login() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email === "tester@example.com" && password === "SecurePass123!") {
+                document.getElementById("message").innerText =
+                    "Login successful";
+            } else {
+                document.getElementById("message").innerText =
+                    "Invalid credentials";
+            }
+        }
+    </script>
+
+<hr>
+
+<h2>Employee Data Entry</h2>
+
+<label>Employee ID:</label>
+<input id="employeeId" type="text">
+
+<br><br>
+
+<label>Employee Name:</label>
+<input id="employeeName" type="text">
+
+<br><br>
+
+<label>Department:</label>
+<select id="department">
+    <option value="">Select Department</option>
+    <option value="Engineering">Engineering</option>
+    <option value="QA">QA</option>
+    <option value="IT">IT</option>
+</select>
+
+<br><br>
+
+<button onclick="saveEmployee()">Save Employee</button>
+
+<p id="employeeMessage"></p>
+
+<h3>Employee Records</h3>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Department</th>
+        </tr>
+    </thead>
+    <tbody id="employeeTable"></tbody>
+</table>
+
+<script>
+    function saveEmployee() {
+        const id = document.getElementById("employeeId").value;
+        const name = document.getElementById("employeeName").value;
+        const department = document.getElementById("department").value;
+
+        if (id === "" || name === "" || department === "") {
+            document.getElementById("employeeMessage").innerText =
+                "Employee ID, name, and department are required.";
+            return;
+        }
+
+        const row = document.createElement("tr");
+
+        row.innerHTML =
+            "<td>" + id + "</td>" +
+            "<td>" + name + "</td>" +
+            "<td>" + department + "</td>";
+
+        document.getElementById("employeeTable").appendChild(row);
+
+        document.getElementById("employeeMessage").innerText =
+            "Employee saved successfully.";
+    }
+</script>
+</body>
+</html>
+
